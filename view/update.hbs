@@ -17,9 +17,9 @@
   <label for="phn" style="display: block; margin-bottom: 10px; font-weight: bold;">Phone No</label>
   <input type="phone" style="width:200px; padding: 8px; margin-bottom: 16px; box-sizing: border-box; border: 2px solid #ccc; border-radius: 4px;" placeholder="Type phone no to be searched" name="phone" id="phone" required>
 
-  <button type="submit" style="background-color: #e4b22b; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 15%;" class="registerbtn">SEARCH STUDENT</button>
+  <button type="submit" style="background-color: #e4b22b; box-shadow: 0 0 10px rgba(65, 60, 3, 0.829)808)9);color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 15%;" class="registerbtn">SEARCH STUDENT</button>
 
-  <a href="./" style="display: block; margin-top: 10px; text-align: center; color: black; text-decoration: none;">BACK TO HOME PAGE</a>
+  <a href="/index" style="display: block; margin-top: 10px; text-align: center; color: black; text-decoration: none;">BACK TO HOME PAGE</a>
   <br>
    
  {{#if umesg}}
@@ -33,39 +33,39 @@
     </form>
   </div>
 
-<!--Search form design end-->
+
 
 {{#if mesg1}}
-       <div class="container">
-       <form action="/updatestudent"  >
-   <h3>UPDATE STUDENT</h3>
-   
-    <hr>
-{{#data}}
-    <label for="name"><b>Student name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" value="{{username}}" id="name" required>
+   <div class="container">
+      <form action="/updatestudent" method="post">
+         <h3>UPDATE STUDENT</h3>
+         <hr>
+         {{#each data}}
+            <label for="name"><b>Student name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" value="{{name}}" id="name" required>
 
-    <label for="phn"><b>Phone no</b></label>
-    <input type="phone" placeholder="Enter Phone Number" name="phone" value="{{phoneno}}" id="phone" required readonly>
+            <label for="phn"><b>Phone no</b></label>
+            <input type="phone" placeholder="Enter Phone Number" name="phone" value="{{phone}}" id="phone" required>
 
-    <label for="eml-id"><b>Email Id</b></label>
-    <input type="email" placeholder="Enter Email Id" name="email" value="{{emailid}}" id="email" required readonly>
-   
-  <div class="gender_g">
-     <strong>Gender</strong>
-     <input type="radio" name="gender" id="" value="Male"> Male
-     <input type="radio" name="gender" id=""  value="Female">  Female
-  </div>
-    <button type="submit" class="registerbtn">UPDATE STUDENT</button>
-{{/data}}
-  
-    <a href="./" style="color:black">BACK TO HOME PAGE</a> <br>
-     
-    
-</form>
-</div>
-     
-      {{/if}}      
+            <label for="eml-id"><b>Email Id</b></label>
+            <input type="email" placeholder="Enter Email Id" name="email" value="{{email}}" id="email" required>
+
+            <div class="gender_g">
+               <strong>Gender</strong>
+               <input type="radio" name="gender" value="Male" {{#ifCond gender '===' 'Male'}} checked {{/ifCond}}> Male
+               <input type="radio" name="gender" value="Female" {{#ifCond gender '===' 'Female'}} checked {{/ifCond}}> Female
+            </div>
+            <button type="submit" class="registerbtn">UPDATE STUDENT</button>
+         {{/each}}
+
+         <a href="/index" style="color:black">BACK TO INDEX PAGE</a> <br>
+      </form>
+   </div>
+{{/if}}
+
+<!-- ... (remaining HTML code) ... -->
+
+
 </body>
 </html>
 
